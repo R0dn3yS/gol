@@ -1,0 +1,1 @@
+export * as sdl2 from 'https://deno.land/x/sdl2@0.5.1/mod.ts';
