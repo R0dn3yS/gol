@@ -1,22 +1,9 @@
 import { sdl2 } from './deps.ts';
 
 const SIZE = 100;
-const SCALE = 5;
+const SCALE = 10;
 
 // Initialize Screen
-// let screen = [
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// 	[ false, false, false, false, false, false, false, false, false, false, ],
-// ];
-
 let screen = new Array(SIZE).fill(null).map((_) => new Array(SIZE).fill(false));
 
 // Make screen buffer
@@ -25,13 +12,11 @@ const screen_buffer = screen;
 // Generate random playfield
 for (let i = 0; i < SIZE; i++) {
 	for (let j = 0; j < SIZE; j++) {
-		if (Math.floor(Math.random() * 10) === 1) {
+		if (Math.floor(Math.random() * 15) === 1) {
 			screen[i][j] = true;
 		}
 	}
 }
-
-console.log(screen);
 
 // Initialize window
 const window = new sdl2.WindowBuilder('Game of Life', SIZE * SCALE, SIZE * SCALE).build();
@@ -42,7 +27,7 @@ for (const event of window.events()) {
 	// Quit game
 	if (event.type === sdl2.EventType.Quit) {
     break;
-  } else if (event.type === sdl2.EventType.Draw) {
+	} else if (event.type === sdl2.EventType.Draw) {
 		// Clear the screen
 		canvas.setDrawColor(255, 255, 255, 255);
 		canvas.clear();
