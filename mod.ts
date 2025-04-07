@@ -1,6 +1,6 @@
 import { sdl2 } from './deps.ts';
 
-const SIZE = 100;
+const SIZE = 50;
 const SCALE = 10;
 
 // Initialize Screen
@@ -23,7 +23,7 @@ const window = new sdl2.WindowBuilder('Game of Life', SIZE * SCALE, SIZE * SCALE
 const canvas = window.canvas();
 
 // Game event handler
-for (const event of window.events()) {
+for await (const event of window.events()) {
 	// Quit game
 	if (event.type === sdl2.EventType.Quit) {
     break;
